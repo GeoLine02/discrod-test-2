@@ -14,7 +14,7 @@ const connection = require("./src/postgresql");
 const server = createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:5173",
+    origin: process.env.FRONT_END_URL,
     methods: ["GET", "POST", "PATCH", "PUT", "DELETE"],
   },
 });
@@ -22,12 +22,12 @@ const { socketHandler } = require("./src/socketIo");
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: process.env.FRONT_END_URL,
     credentials: true,
   })
 );
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "http://localhost:5173"); // Replace with your frontend URL
+  res.header("Access-Control-Allow-Origin", process.env.FRONT_END_URL); // Replace with your frontend URL
   res.header("Access-Control-Allow-Credentials", "true"); // Allow credentials
   res.header("Access-Control-Allow-Methods", "GET,HEAD,PUT,PATCH,POST,DELETE"); // Allowed methods
   res.header(

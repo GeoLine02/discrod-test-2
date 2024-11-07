@@ -14,7 +14,7 @@
     "dialect": "postgres"
   },
   "production": {
-    "url": "${DATABASE_URL}",
+    "url": "${INTERNAL_DATABASE_URL}",
     "dialect": "postgres"
   }
 }
