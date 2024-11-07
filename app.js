@@ -26,7 +26,7 @@ app.use(
     credentials: true,
   })
 );
-pp.use((req, res, next) => {
+app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", process.env.FRONT_END_URL);
   res.setHeader(
     "Access-Control-Allow-Methods",
