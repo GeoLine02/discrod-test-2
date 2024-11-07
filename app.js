@@ -19,7 +19,7 @@ const io = new Server(server, {
   },
 });
 const { socketHandler } = require("./src/socketIo");
-
+console.log(process.env.FRONT_END_URL);
 app.use(
   cors({
     origin: process.env.FRONT_END_URL,
