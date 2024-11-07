@@ -67,7 +67,6 @@ const sendFriendRequest = async (req, res) => {
       where: { friendId: senderId, userId: receiver.id },
     });
     if (isFriend) {
-      console.log("SenderIdddddddd", senderId);
       return res.status(200).json({ message: "User is already your friend" });
     }
     if (existingRequest) {
