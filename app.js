@@ -16,6 +16,7 @@ const io = new Server(server, {
   cors: {
     origin: process.env.FRONT_END_URL,
     methods: ["GET", "POST", "PATCH", "PUT", "DELETE"],
+    credentials: true,
   },
 });
 const { socketHandler } = require("./src/socketIo");
