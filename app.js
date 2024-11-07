@@ -26,16 +26,16 @@ app.use(
     credentials: true,
   })
 );
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", process.env.FRONT_END_URL); // Replace with your frontend URL
-  res.header("Access-Control-Allow-Credentials", "true"); // Allow credentials
-  res.header("Access-Control-Allow-Methods", "GET,HEAD,PUT,PATCH,POST,DELETE"); // Allowed methods
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin,X-Requested-With,Content-Type,Accept,Authorization"
-  );
-  next();
-});
+// app.use((req, res, next) => {
+//   res.header("Access-Control-Allow-Origin", process.env.FRONT_END_URL); // Replace with your frontend URL
+//   res.header("Access-Control-Allow-Credentials", "true"); // Allow credentials
+//   res.header("Access-Control-Allow-Methods", "GET,HEAD,PUT,PATCH,POST,DELETE"); // Allowed methods
+//   res.header(
+//     "Access-Control-Allow-Headers",
+//     "Origin,X-Requested-With,Content-Type,Accept,Authorization"
+//   );
+//   next();
+// });
 app.use(bodyParser.json());
 app.use(express.json());
 app.use(
