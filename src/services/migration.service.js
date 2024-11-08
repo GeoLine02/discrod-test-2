@@ -3,7 +3,7 @@ const { exec } = require("child_process");
 const runMigrations = async (req, res) => {
   try {
     exec(
-      "npx sequelize-cli db:migrate --migrations-path src/sequelize",
+      "npx sequelize-cli db:migrate --migrations-path src/sequelize/migrations --config src/sequelize/config/config.js",
       (error, stdout, stderr) => {
         if (error) {
           console.error(`Migration error ${error.message}`);
