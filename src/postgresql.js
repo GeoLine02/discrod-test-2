@@ -2,17 +2,12 @@ const { Sequelize } = require("sequelize");
 
 const sequelize = new Sequelize(process.env.INTERNAL_DATABASE_URL, {
   dialect: "postgres",
-  dialectOptions: {
-    // ssl: {
-    //   require: true,
-    //   rejectUnauthorized: false,
-    // },
-  },
+  logging: console.log, // Logs SQL queries and connection details
   pool: {
-    max: 10, // Allows a larger number of concurrent connections (tune this based on expected load)
-    min: 2, // Keeps a few connections in reserve, which can improve response time for new queries
-    acquire: 60000, // Increases the max time to wait for a connection to 60 seconds (good for high-load apps)
-    idle: 20000, // Releases connections after 20 seconds of inactivity to reduce resource usage
+    max: 5,
+    min: 0,
+    acquire: 30000,
+    idle: 10000,
   },
 });
 
