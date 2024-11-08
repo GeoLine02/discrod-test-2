@@ -1,10 +1,8 @@
 const { DirectMessages, ChannelMessages } = require("../sequelize/models");
 
 const liveChatEventsHandler = (socket, io, connectedUsers) => {
-  // send message to friend
   socket.on("send-message-to-friend", async (messageObj) => {
     try {
-      console.log(messageObj);
       const { content, sender, receiver, sentDate } = messageObj;
       if (content) {
         await DirectMessages.create({

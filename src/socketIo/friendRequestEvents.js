@@ -25,7 +25,6 @@ const friendRequestHandler = (socket, io, connectedUsers) => {
           },
         });
         const sender = await User.findOne({ where: { id: senderId } });
-        console.log("sender", sender);
         const isFriend = await FriendList.findOne({
           where: { userId: user.id, friendId: senderId },
         });
@@ -96,9 +95,7 @@ const friendRequestHandler = (socket, io, connectedUsers) => {
     console.log("keys: ", Object.keys(connectedUsers));
     friendList.map((friend) => {
       return Object.keys(connectedUsers).map((key) => {
-        console.log(key, friend?.Friend?.username);
         if (friend?.Friend?.username === key) {
-          console.log("enters");
           return onlineFriends.push({
             id: friend?.Friend?.id,
             username: friend?.Friend?.username,
@@ -106,8 +103,6 @@ const friendRequestHandler = (socket, io, connectedUsers) => {
         }
       });
     });
-    console.log("@@@@@@@@@@@@@@@@@", onlineFriends);
-    console.log("user", user);
     io.to(connectedUsers[user?.username]).emit(
       "receive-online-friends",
       onlineFriends

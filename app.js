@@ -20,7 +20,7 @@ const io = new Server(server, {
   },
 });
 const { socketHandler } = require("./src/socketIo");
-console.log(process.env.FRONT_END_URL);
+
 app.use(
   cors({
     origin: process.env.FRONT_END_URL,
@@ -39,21 +39,11 @@ app.use((req, res, next) => {
   );
   res.setHeader("Access-Control-Allow-Credentials", true);
   res.setHeader("Access-Control-Allow-Private-Network", true);
-  //  Firefox caps this at 24 hours (86400 seconds). Chromium (starting in v76) caps at 2 hours (7200 seconds). The default value is 5 seconds.
   res.setHeader("Access-Control-Max-Age", 7200);
 
   next();
 });
-// app.use((req, res, next) => {
-//   res.header("Access-Control-Allow-Origin", process.env.FRONT_END_URL); // Replace with your frontend URL
-//   res.header("Access-Control-Allow-Credentials", "true"); // Allow credentials
-//   res.header("Access-Control-Allow-Methods", "GET,HEAD,PUT,PATCH,POST,DELETE"); // Allowed methods
-//   res.header(
-//     "Access-Control-Allow-Headers",
-//     "Origin,X-Requested-With,Content-Type,Accept,Authorization"
-//   );
-//   next();
-// });
+
 app.use(bodyParser.json());
 app.use(express.json());
 app.use(
@@ -68,6 +58,7 @@ const friendsRoutes = require("./src/routes/friends.routes");
 const serversRoutes = require("./src/routes/server.routes");
 const messagesRoutes = require("./src/routes/messages.routes");
 const channelsRoutes = require("./src/routes/channels.routes");
+const migrationRoutes = require("./src/routes/migration.routes");
 connection();
 
 app.use("/user", userRoutes);
@@ -75,6 +66,7 @@ app.use("/friend", friendsRoutes);
 app.use("/server", serversRoutes);
 app.use("/messages", messagesRoutes);
 app.use("/channels", channelsRoutes);
+app.use("/migration", migrationRoutes);
 socketHandler(io);
 
 server.listen(port, () =>
