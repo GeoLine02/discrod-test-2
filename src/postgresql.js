@@ -3,16 +3,10 @@ const { Sequelize } = require("sequelize");
 const sequelize = new Sequelize(process.env.INTERNAL_DATABASE_URL, {
   dialect: "postgres",
   dialectOptions: {
-    // ssl: {
-    //   require: true,
-    //   rejectUnauthorized: false,
-    // },
-  },
-  pool: {
-    max: 5,
-    min: 0,
-    acquire: 30000,
-    idle: 10000, // Adjust this as needed
+    ssl: {
+      require: true,
+      rejectUnauthorized: false,
+    },
   },
 });
 
