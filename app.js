@@ -61,6 +61,18 @@ const channelsRoutes = require("./src/routes/channels.routes");
 const migrationRoutes = require("./src/routes/migration.routes");
 connection();
 
+async function keepDatabaseConnectionAlive() {
+  try {
+    await sequelize.authenticate();
+    console.log("Database connection is alive.");
+  } catch (error) {
+    console.error("Database connection lost:", error);
+  }
+}
+
+// Run this function every 15 minutes
+setInterval(keepDatabaseConnectionAlive, 900000);
+
 app.use("/user", userRoutes);
 app.use("/friend", friendsRoutes);
 app.use("/server", serversRoutes);
