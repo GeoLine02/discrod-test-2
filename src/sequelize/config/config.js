@@ -26,10 +26,10 @@ module.exports = {
     },
 
     pool: {
-      max: 5, // Maximum number of connections in the pool
-      min: 0, // Minimum number of connections in the pool
-      acquire: 30000, // Maximum time in ms to get a connection
-      idle: 10000, // Maximum time in ms that a connection can be idle before being released
+      max: 10, // Allows a larger number of concurrent connections (tune this based on expected load)
+      min: 2, // Keeps a few connections in reserve, which can improve response time for new queries
+      acquire: 60000, // Increases the max time to wait for a connection to 60 seconds (good for high-load apps)
+      idle: 20000, // Releases connections after 20 seconds of inactivity to reduce resource usage
     },
   },
 };
