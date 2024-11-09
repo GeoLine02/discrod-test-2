@@ -16,7 +16,7 @@ module.exports = {
     dialect: "postgres",
   },
   production: {
-    url: process.env.INTERNAL_DATABASE_URL,
+    url: process.env.INTERNAL_DATABASE_URL + "?sslmode=disable",
     dialect: "postgres",
     dialectOptions: {
       ssl: {
