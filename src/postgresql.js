@@ -21,6 +21,7 @@ const connection = async () => {
   try {
     await sequelize.authenticate();
     console.log("Connection has been established successfully.");
+    console.log("intenral url", process.env.INTERNAL_DATABASE_URL);
     console.log(process.env.NODE_ENV);
   } catch (error) {
     console.error("Unable to connect to the database:", error);
