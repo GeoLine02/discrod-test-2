@@ -20,7 +20,7 @@ module.exports = {
     dialect: "postgres",
     dialectOptions: {
       ssl: {
-        require: true, // Enforce SSL connection
+        require: false, // Enforce SSL connection
         rejectUnauthorized: false, // Disable certificate validation (this may be okay for certain use cases, but consider enabling for more security)
       },
     },
