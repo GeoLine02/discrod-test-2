@@ -19,10 +19,10 @@ module.exports = {
     url: process.env.INTERNAL_DATABASE_URL, // Adding sslmode=require for SSL connection
     dialect: "postgres",
     dialectOptions: {
-      ssl: {
-        require: false, // Enforce SSL connection
-        rejectUnauthorized: false, // Disable certificate validation (this may be okay for certain use cases, but consider enabling for more security)
-      },
+      // ssl: {
+      //   require: false, // Enforce SSL connection
+      //   rejectUnauthorized: false, // Disable certificate
+      // },
     },
     pool: {
       max: 10,
