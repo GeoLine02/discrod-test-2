@@ -25,7 +25,7 @@ module.exports = {
       // },
     },
     pool: {
-      max: 10,
+      max: Infinity,
       min: 2,
       acquire: 60000,
       idle: 20000,
