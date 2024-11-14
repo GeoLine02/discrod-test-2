@@ -9,7 +9,7 @@ const sequelize = new Sequelize(process.env.INTERNAL_DATABASE_URL, {
     // },
   },
   pool: {
-    max: Infinity,
+    max: 10,
     min: 0,
     acquire: 90000, // Wait up to 90 seconds for a connection
     idle: 10000, // Keep connections open for 10 seconds after inactivity

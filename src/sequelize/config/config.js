@@ -25,10 +25,10 @@ module.exports = {
       // },
     },
     pool: {
-      max: Infinity,
-      min: 2,
+      max: 10,
+      min: 0,
       acquire: 60000,
-      idle: 20000,
+      idle: 10000,
     },
   },
 };
