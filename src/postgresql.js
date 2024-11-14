@@ -3,6 +3,7 @@ const { Sequelize } = require("sequelize");
 const sequelize = new Sequelize(process.env.INTERNAL_DATABASE_URL, {
   dialect: "postgres",
   dialectOptions: {
+    keepAlive: true,
     // ssl: {
     //   require: false,
     //   rejectUnauthorized: false,
@@ -11,7 +12,7 @@ const sequelize = new Sequelize(process.env.INTERNAL_DATABASE_URL, {
   pool: {
     max: 10,
     min: 0,
-    acquire: 90000, // Wait up to 90 seconds for a connection
+    acquire: 60000, // Wait up to 90 seconds for a connection
     idle: 10000, // Keep connections open for 10 seconds after inactivity
   },
   logging: console.log, // Enable logging for debugging
